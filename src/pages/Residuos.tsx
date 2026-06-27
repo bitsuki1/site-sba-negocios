@@ -4,6 +4,10 @@ import { Hero } from "@/components/Hero";
 import { SecaoCTA } from "@/components/SecaoCTA";
 import { CardSolucao } from "@/components/CardSolucao";
 import { solucoesPorTema, PARCEIRO_CSTR } from "@/data/site";
+import residuoValor from "@/assets/cstr/residuo-valor.png";
+import plantaBiogas from "@/assets/cstr/planta-biogas.jpg";
+import premioImg from "@/assets/cstr/premio.jpg";
+import cstrLogo from "@/assets/cstr/cstr-logo.png";
 
 const ESTAGIOS = [
   {
@@ -44,6 +48,39 @@ const Residuos = () => {
         subtitulo="A SBA não constrói usinas: estrutura o projeto e conecta cliente, operador, tecnologia e jurídico — do primeiro contato ao contrato. Atendemos o resíduo urbano do município, o grande gerador e o setor hospitalar."
         ctaPrincipal={{ label: "Conversar sobre um projeto", href: "/contato" }}
       />
+
+      {/* Do resíduo ao valor */}
+      <section className="border-b border-border bg-background">
+        <div className="container-sba py-16 md:py-20">
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+            <div>
+              <div className="rule-gold mb-5" />
+              <h2 className="font-display text-3xl font-bold text-primary-dark">
+                Do resíduo ao valor
+              </h2>
+              <div className="mt-5 space-y-4 text-muted-foreground">
+                <p>
+                  Hoje o resíduo é, quase sempre, só despesa: transporte, aterro,
+                  passivo ambiental e pressão regulatória. A boa notícia é que,
+                  bem estruturado, o mesmo resíduo vira reciclável, energia e
+                  receita nova.
+                </p>
+                <p>
+                  É esse o caminho que a SBA monta — da coleta à valorização —
+                  com a tecnologia certa para cada material e o operador certo
+                  para tocar a planta.
+                </p>
+              </div>
+            </div>
+            <img
+              src={residuoValor}
+              alt="Do resíduo ao valor: reciclagem, energia e economia"
+              className="w-full rounded-lg border border-border bg-white"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
 
       {/* Os 3 segmentos */}
       <section className="bg-background">
@@ -106,7 +143,13 @@ const Residuos = () => {
         <div className="container-sba py-16 md:py-20">
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
             <div>
-              <div className="rule-gold mb-5" />
+              <span className="mb-5 inline-flex rounded-lg bg-primary-dark px-4 py-3">
+                <img
+                  src={cstrLogo}
+                  alt="CSTR — Centro Sustentável de Tratamento de Resíduos"
+                  className="h-12 w-auto"
+                />
+              </span>
               <p className="text-sm font-semibold uppercase tracking-wide text-gold-foreground">
                 Parceiro de tecnologia
               </p>
@@ -133,10 +176,23 @@ const Residuos = () => {
               </a>
             </div>
 
-            <div className="rounded-lg border border-primary/20 bg-primary/5 p-7">
-              <h3 className="font-display text-lg font-semibold text-primary-dark">
-                O que o {PARCEIRO_CSTR.nome} entrega
-              </h3>
+            <div className="space-y-5">
+              <figure>
+                <img
+                  src={premioImg}
+                  alt="CSTR reconhecido como Startup do ano (Troféu Frotas & Fretes Verdes 2025)"
+                  className="w-full rounded-lg border border-border"
+                  loading="lazy"
+                />
+                <figcaption className="mt-2 text-xs text-muted-foreground">
+                  Reconhecido como Startup do ano — Troféu Frotas &amp; Fretes
+                  Verdes 2025.
+                </figcaption>
+              </figure>
+              <div className="rounded-lg border border-primary/20 bg-primary/5 p-7">
+                <h3 className="font-display text-lg font-semibold text-primary-dark">
+                  O que o {PARCEIRO_CSTR.nome} entrega
+                </h3>
               <ul className="mt-5 space-y-3">
                 {PARCEIRO_CSTR.entregas.map((item) => (
                   <li key={item} className="flex items-start gap-3">
@@ -154,6 +210,43 @@ const Residuos = () => {
                 ambiental e devolvê-lo como valor — energia, receita ou
                 conformidade. Os números variam caso a caso e ficam sob consulta.
               </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Planta de valorização — render */}
+      <section className="bg-primary-dark">
+        <div className="container-sba py-16 md:py-20">
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+            <img
+              src={plantaBiogas}
+              alt="Render de uma planta de valorização de resíduos (biogás, biometano e biofertilizante)"
+              className="w-full rounded-lg shadow-xl ring-1 ring-white/10"
+              loading="lazy"
+            />
+            <div className="text-primary-foreground">
+              <div className="rule-gold mb-5" />
+              <h2 className="font-display text-3xl font-bold">
+                Como é uma planta de valorização
+              </h2>
+              <p className="mt-5 leading-relaxed text-primary-foreground/85">
+                Em vez de mandar tudo para o aterro, o resíduo entra numa planta
+                que separa, trata e transforma o material — gerando energia,
+                biometano, biofertilizante e até crédito de carbono. É a
+                infraestrutura que a SBA estrutura junto ao parceiro de tecnologia.
+              </p>
+              <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                {["Energia e biometano", "Biofertilizante", "Crédito de carbono", "Menos aterro"].map(
+                  (b) => (
+                    <li key={b} className="flex items-center gap-3 text-sm">
+                      <Check className="h-4 w-4 shrink-0 text-gold" />
+                      <span className="text-primary-foreground/90">{b}</span>
+                    </li>
+                  )
+                )}
+              </ul>
             </div>
           </div>
         </div>

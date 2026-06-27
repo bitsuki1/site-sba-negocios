@@ -3,6 +3,9 @@ import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
 import { SecaoCTA } from "@/components/SecaoCTA";
 import { PARCEIRO_CSTR } from "@/data/site";
+import hospitalarImg from "@/assets/cstr/hospitalar.jpg";
+import incineradorImg from "@/assets/cstr/incinerador.jpg";
+import neomagImg from "@/assets/cstr/neomag.jpg";
 
 const DESAFIOS_RSS = [
   "Resíduo infectante e de alto risco sanitário",
@@ -14,6 +17,7 @@ const DESAFIOS_RSS = [
 const TECNOLOGIAS = [
   {
     icon: Flame,
+    img: incineradorImg,
     nome: "Incinerador de resíduos hospitalares",
     status: "Em operação",
     capacidade: "180 a 200 kg/dia",
@@ -25,6 +29,7 @@ const TECNOLOGIAS = [
   },
   {
     icon: FlaskConical,
+    img: neomagImg,
     nome: "NEOMAG — neotermólise óxido-magnética",
     status: "Em desenvolvimento (PD&I)",
     capacidade: "até 2 t/dia",
@@ -55,24 +60,33 @@ const ResiduosHospitalares = () => {
         ctaPrincipal={{ label: "Falar com a SBA", href: "/contato" }}
       />
 
-      {/* O desafio */}
+      {/* O desafio + imagem */}
       <section className="border-b border-border bg-secondary/50">
-        <div className="container-sba py-12 md:py-14">
-          <div className="grid gap-6 md:grid-cols-[1fr_1.5fr] md:items-center">
-            <h2 className="font-display text-2xl font-bold text-primary-dark">
-              O desafio do RSS
-            </h2>
-            <ul className="grid gap-x-8 gap-y-3 sm:grid-cols-2">
-              {DESAFIOS_RSS.map((it) => (
-                <li
-                  key={it}
-                  className="flex items-start gap-3 text-sm leading-relaxed text-foreground/90"
-                >
-                  <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-gold-foreground" />
-                  <span>{it}</span>
-                </li>
-              ))}
-            </ul>
+        <div className="container-sba py-14 md:py-16">
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+            <img
+              src={hospitalarImg}
+              alt="Manejo de resíduos de serviços de saúde (RSS)"
+              className="h-64 w-full rounded-lg object-cover md:h-80"
+              loading="lazy"
+            />
+            <div>
+              <div className="rule-gold mb-4" />
+              <h2 className="font-display text-2xl font-bold text-primary-dark md:text-3xl">
+                O desafio do RSS
+              </h2>
+              <ul className="mt-6 grid gap-x-8 gap-y-3 sm:grid-cols-2">
+                {DESAFIOS_RSS.map((it) => (
+                  <li
+                    key={it}
+                    className="flex items-start gap-3 text-sm leading-relaxed text-foreground/90"
+                  >
+                    <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-gold-foreground" />
+                    <span>{it}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -98,8 +112,15 @@ const ResiduosHospitalares = () => {
               return (
                 <div
                   key={t.nome}
-                  className="flex flex-col rounded-lg border border-border bg-card p-7"
+                  className="flex flex-col overflow-hidden rounded-lg border border-border bg-card"
                 >
+                  <img
+                    src={t.img}
+                    alt={t.nome}
+                    className="h-44 w-full object-cover"
+                    loading="lazy"
+                  />
+                  <div className="flex flex-1 flex-col p-7">
                   <div className="flex items-start justify-between gap-3">
                     <span className="flex h-12 w-12 items-center justify-center rounded-md bg-secondary text-primary">
                       <Icone className="h-6 w-6" aria-hidden="true" />
@@ -132,6 +153,7 @@ const ResiduosHospitalares = () => {
                       </li>
                     ))}
                   </ul>
+                  </div>
                 </div>
               );
             })}

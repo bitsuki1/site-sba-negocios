@@ -4,20 +4,17 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { NAV, MARCA } from "@/data/site";
+import logoSba from "@/assets/sba-logo-flat.png";
 
 const Logo = () => (
-  <Link to="/" className="flex items-center gap-2.5" aria-label="SBA Negócios — início">
-    <span className="flex h-9 w-9 items-center justify-center rounded-md bg-primary font-display text-sm font-bold text-primary-foreground">
-      SBA
-    </span>
-    <span className="flex flex-col leading-none">
-      <span className="font-display text-base font-semibold text-primary-dark">
-        SBA Negócios
-      </span>
-      <span className="text-[11px] text-muted-foreground">
-        Desenvolvimento de negócios
-      </span>
-    </span>
+  <Link to="/" className="flex items-center" aria-label="SBA Negócios — início">
+    <img
+      src={logoSba}
+      alt="SBA Negócios"
+      className="h-9 w-auto md:h-10"
+      width={210}
+      height={75}
+    />
   </Link>
 );
 

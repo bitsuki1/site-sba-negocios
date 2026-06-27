@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { MapPin, Phone, Mail } from "lucide-react";
 import { NAV, CONTATO, MARCA } from "@/data/site";
+import logoSba from "@/assets/sba-logo-flat.png";
 
 export const Footer = () => {
   const ano = new Date().getFullYear();
@@ -10,12 +11,9 @@ export const Footer = () => {
       <div className="container-sba grid gap-10 py-14 md:grid-cols-3">
         {/* Marca */}
         <div>
-          <div className="flex items-center gap-2.5">
-            <span className="flex h-9 w-9 items-center justify-center rounded-md bg-primary-foreground font-display text-sm font-bold text-primary-dark">
-              SBA
-            </span>
-            <span className="font-display text-lg font-semibold">SBA Negócios</span>
-          </div>
+          <span className="inline-flex rounded-lg bg-primary-foreground px-3 py-2">
+            <img src={logoSba} alt="SBA Negócios" className="h-9 w-auto" />
+          </span>
           <p className="mt-4 max-w-xs text-sm text-primary-foreground/75">
             {MARCA.tagline} para os setores público e privado. Gestão que conecta
             as pontas e estrutura projetos.

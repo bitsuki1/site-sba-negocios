@@ -205,14 +205,15 @@ export const SOLUCOES: Solucao[] = [
   },
   {
     id: "estabilizador-solo",
-    titulo: "Estabilizador de Solo",
+    titulo: "Estabilizador de Solo (ConAid CBR Plus)",
     tema: "Infraestrutura",
     setores: ["publico", "privado"],
     resumo:
-      "Solução de estabilização de solo para obras e infraestrutura, pública ou privada.",
+      "Estabilização iônica do solo com o ConAid CBR Plus (líder mundial, +100 países) para estradas, pátios e obras — menos lama, menos poeira e menos manutenção.",
     beneficio:
-      "Obras mais duráveis e menos custo de manutenção ao longo do tempo.",
+      "Estradas firmes o ano todo, com custo de material muito menor que cascalho, brita ou solo-cimento.",
     icon: Layers,
+    href: "/estabilizador-de-solo",
   },
   {
     id: "eventos-cultura",
