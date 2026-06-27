@@ -15,6 +15,11 @@ import {
   Droplets,
   Layers,
   CalendarRange,
+  Sofa,
+  Disc3,
+  Wheat,
+  Flame,
+  FlaskConical,
   type LucideIcon,
 } from "lucide-react";
 
@@ -231,18 +236,74 @@ export const solucoesPorTema = (tema: Tema) =>
 // ----------------------------------------------------------------------------
 // Parceiro de tecnologia — CSTR (conteúdo cedido pelo parceiro)
 // ----------------------------------------------------------------------------
+export interface SistemaCSTR {
+  nome: string;
+  capacidade: string;
+  nota: string;
+  icon: LucideIcon;
+  status?: string; // ex.: "Em desenvolvimento (PD&I)"
+}
+
 export const PARCEIRO_CSTR = {
   nome: "CSTR",
   nomeCompleto: "Centro Sustentável de Tratamento de Resíduos",
+  origem: "Ouro Preto — MG",
   site: "https://cstr.eco.br",
   chamada:
-    "Para transformar resíduo em energia, a SBA trabalha com o CSTR. Ele projeta, implanta e gerencia plantas de tratamento de resíduos — transformando passivos ambientais em ativos econômicos.",
+    "Para transformar resíduo em valor, a SBA trabalha com o CSTR. Ele projeta, implanta e gerencia plantas de tratamento de resíduos — transformando passivos ambientais em ativos econômicos.",
   entregas: [
     "Energia elétrica, biogás, biometano e biofertilizante",
     "Plantas de resíduos projetadas, implantadas e gerenciadas",
-    "Tecnologia TermoBiogás Up, validada (TRL-9) com apoio da FINEP e da UFOP",
-    "Premiada no Troféu Frotas & Fretes Verdes 2025 (Startup do ano — Indústria 4.0)",
+    "Reconhecido como Startup do ano para a Indústria 4.0",
+    "Tecnologia própria, com frente de pesquisa e inovação (PD&I)",
   ],
+  // Projeto-âncora (fato divulgado pelo parceiro)
+  projeto: {
+    titulo: "Planta em escala industrial",
+    local: "Congonhas do Campo — MG",
+    status: "Em construção — inauguração prevista para 2027",
+    tecnologia: "Tecnologia de explosão a vapor",
+  },
+  // Linha de tecnologias / capacidades técnicas (do parceiro CSTR)
+  sistemas: [
+    {
+      nome: "Resíduos sólidos urbanos",
+      capacidade: "50 a 300 t/dia",
+      nota: "Separação automatizada, sistema modular e escalável.",
+      icon: Recycle,
+    },
+    {
+      nome: "Resíduos volumosos",
+      capacidade: "10 a 100 t/dia",
+      nota: "Móveis, colchões, sofás e itens grandes; recupera metais recicláveis.",
+      icon: Sofa,
+    },
+    {
+      nome: "Pneus usados",
+      capacidade: "2 a 10 t/dia",
+      nota: "Vira granulado de borracha, aço e fibra — matéria-prima nova.",
+      icon: Disc3,
+    },
+    {
+      nome: "Biomassa",
+      capacidade: "10 a 80 t/dia",
+      nota: "Resíduo agrícola e florestal vira energia, pellets e briquetes.",
+      icon: Wheat,
+    },
+    {
+      nome: "Resíduos hospitalares (RSS)",
+      capacidade: "180 a 200 kg/dia",
+      nota: "Incineração em alta temperatura (até 1200 °C), no próprio local de geração.",
+      icon: Flame,
+    },
+    {
+      nome: "NEOMAG — neotermólise óxido-magnética",
+      capacidade: "até 2 t/dia",
+      nota: "Reduz até 90% da massa e elimina patógenos, sem combustível fóssil.",
+      icon: FlaskConical,
+      status: "Em desenvolvimento (PD&I)",
+    },
+  ] as SistemaCSTR[],
 };
 
 // Passos didáticos da Recuperação Tributária

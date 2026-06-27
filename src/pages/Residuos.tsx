@@ -159,6 +159,79 @@ const Residuos = () => {
         </div>
       </section>
 
+      {/* Tecnologias / capacidades do CSTR */}
+      <section className="bg-secondary/50">
+        <div className="container-sba py-16 md:py-20">
+          <div className="mx-auto max-w-2xl text-center">
+            <div className="mx-auto mb-5 rule-gold" />
+            <h2 className="font-display text-3xl font-bold text-primary-dark">
+              As tecnologias do {PARCEIRO_CSTR.nome}
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              Cada material tem o seu sistema. As faixas abaixo são as
+              capacidades técnicas do parceiro — o dimensionamento de cada
+              projeto é definido caso a caso.
+            </p>
+          </div>
+
+          {/* Projeto-âncora */}
+          <div className="mt-10 rounded-lg border border-primary/20 bg-primary/5 p-6 md:flex md:items-center md:justify-between md:gap-6">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wide text-gold-foreground">
+                {PARCEIRO_CSTR.projeto.titulo}
+              </p>
+              <h3 className="mt-1 font-display text-xl font-semibold text-primary-dark">
+                {PARCEIRO_CSTR.projeto.local}
+              </h3>
+              <p className="mt-1 text-sm text-muted-foreground">
+                {PARCEIRO_CSTR.projeto.tecnologia}
+              </p>
+            </div>
+            <span className="mt-3 inline-block shrink-0 rounded-full bg-accent/15 px-3 py-1.5 text-sm font-semibold text-accent md:mt-0">
+              {PARCEIRO_CSTR.projeto.status}
+            </span>
+          </div>
+
+          {/* Sistemas */}
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {PARCEIRO_CSTR.sistemas.map((s) => {
+              const Icone = s.icon;
+              return (
+                <div
+                  key={s.nome}
+                  className="rounded-lg border border-border bg-card p-5"
+                >
+                  <div className="flex items-start justify-between gap-2">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-md bg-secondary text-primary">
+                      <Icone className="h-5 w-5" aria-hidden="true" />
+                    </span>
+                    {s.status && (
+                      <span className="rounded-full bg-gold/15 px-2.5 py-1 text-xs font-semibold text-gold-foreground">
+                        {s.status}
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="mt-4 font-display text-base font-semibold text-primary-dark">
+                    {s.nome}
+                  </h3>
+                  <p className="mt-1 text-sm font-semibold text-primary">
+                    {s.capacidade}
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {s.nota}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+
+          <p className="mt-6 text-center text-xs text-muted-foreground">
+            Capacidades técnicas informadas pelo parceiro {PARCEIRO_CSTR.nome}.
+            Dimensionamento e valores por projeto, sob consulta.
+          </p>
+        </div>
+      </section>
+
       <SecaoCTA
         titulo="Tem um desafio de resíduos na sua cidade ou empresa?"
         texto="Comece pelo teaser, sem custo. A partir dele, decidimos juntos se vale seguir para o diagnóstico."
