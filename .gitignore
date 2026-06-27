@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Lockfile: não versionado de propósito (regenera no npm install) — ver README
+package-lock.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
