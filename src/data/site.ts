@@ -134,7 +134,7 @@ export const SOLUCOES: Solucao[] = [
     beneficio:
       "Destinação adequada, menos aterro e potencial de energia e receita nova para o município.",
     icon: Recycle,
-    href: "/residuos",
+    href: "/solucoes/residuos-municipal",
     destaque: true,
   },
   {
@@ -147,7 +147,7 @@ export const SOLUCOES: Solucao[] = [
     beneficio:
       "Conformidade com a Política Nacional de Resíduos, menos passivo ambiental e custo sob controle.",
     icon: Factory,
-    href: "/residuos",
+    href: "/solucoes/residuos-grandes-geradores",
   },
   {
     id: "residuos-hospitalar",
@@ -170,6 +170,7 @@ export const SOLUCOES: Solucao[] = [
       "Usinas solares para abastecer prédios públicos, estruturadas com parceiros de engenharia e jurídico.",
     beneficio: "Economia direta e previsível na conta de energia do município.",
     icon: SunMedium,
+    href: "/solucoes/energia-fotovoltaica",
   },
   {
     id: "iluminacao-publica",
@@ -180,6 +181,7 @@ export const SOLUCOES: Solucao[] = [
       "Modernização da iluminação municipal (LED e telegestão), do diagnóstico ao modelo de contratação.",
     beneficio: "Conta de energia menor e uma cidade mais bem iluminada e segura.",
     icon: Lightbulb,
+    href: "/solucoes/iluminacao-publica",
   },
   {
     id: "reflorestamento-carbono",
@@ -191,6 +193,7 @@ export const SOLUCOES: Solucao[] = [
     beneficio:
       "Conformidade ambiental, áreas recuperadas e potencial de receita com carbono.",
     icon: TreePine,
+    href: "/solucoes/reflorestamento-carbono",
   },
   {
     id: "saneamento-agua",
@@ -202,6 +205,7 @@ export const SOLUCOES: Solucao[] = [
     beneficio:
       "Conformidade legal e saúde pública, com o arranjo técnico e financeiro montado.",
     icon: Droplets,
+    href: "/solucoes/saneamento-agua",
   },
   {
     id: "estabilizador-solo",
@@ -224,6 +228,7 @@ export const SOLUCOES: Solucao[] = [
       "Estruturação e captação de recursos para eventos e projetos culturais do município.",
     beneficio: "Economia local movimentada e projetos viáveis, com captação organizada.",
     icon: CalendarRange,
+    href: "/solucoes/eventos-cultura",
   },
 ];
 

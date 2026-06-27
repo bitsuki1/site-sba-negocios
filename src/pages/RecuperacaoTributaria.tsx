@@ -137,6 +137,55 @@ const RecuperacaoTributaria = () => {
         </div>
       </section>
 
+      {/* Perguntas frequentes */}
+      <section className="bg-background">
+        <div className="container-sba py-16 md:py-20">
+          <div className="mx-auto max-w-3xl">
+            <div className="rule-gold mb-5" />
+            <h2 className="font-display text-3xl font-bold text-primary-dark">
+              Perguntas frequentes
+            </h2>
+            <dl className="mt-10 divide-y divide-border">
+              {[
+                {
+                  q: "Isso é seguro juridicamente?",
+                  a: "Sim. Parte de uma decisão definitiva do STF (Tema 1130, RE 1.293.453). Não é uma tese em discussão: é o que a Corte já decidiu.",
+                },
+                {
+                  q: "Quanto custa para o município?",
+                  a: "Nada antecipado. Os honorários são 100% no êxito — cobrados apenas sobre o que for de fato recuperado.",
+                },
+                {
+                  q: "De onde vem o valor apresentado?",
+                  a: "De dado público das contas do município e de um método que pode ser auditado. É sempre um piso estimado, confirmado documento a documento na fase seguinte.",
+                },
+                {
+                  q: "Quem faz a apuração documental?",
+                  a: "É responsabilidade do município, na Receita (e-CAC). O escopo da SBA vai até a aprovação do estudo; a partir daí, orientamos e acompanhamos.",
+                },
+                {
+                  q: "Recuperar isso é boa gestão?",
+                  a: "Sim. É receita que pertence ao município, e recuperá-la é coerente com o dever de boa gestão fiscal (Lei de Responsabilidade Fiscal).",
+                },
+                {
+                  q: "Quanto tempo leva?",
+                  a: "Varia caso a caso. O estudo inicial é rápido; a recuperação em si depende dos trâmites do próprio município. Nada de prazo prometido sem base.",
+                },
+              ].map((item) => (
+                <div key={item.q} className="py-5">
+                  <dt className="font-display text-lg font-semibold text-primary-dark">
+                    {item.q}
+                  </dt>
+                  <dd className="mt-2 leading-relaxed text-muted-foreground">
+                    {item.a}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </div>
+      </section>
+
       <SecaoCTA
         titulo="Solicite o estudo da sua cidade"
         texto="Sem custo antecipado. Você recebe uma estimativa de piso e o método utilizado, para decidir com clareza."

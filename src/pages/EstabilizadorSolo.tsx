@@ -250,18 +250,35 @@ const EstabilizadorSolo = () => {
               <p className="mt-5 leading-relaxed text-muted-foreground">
                 O ConAid CBR Plus tem histórico, certificação ambiental e
                 atestados de grandes operações. A SBA estrutura o projeto e
-                conecta o produto aos parceiros de execução (estabilização e
-                pavimentação).
+                conecta o produto à execução.
               </p>
-              <a
-                href="https://conaidbrasil.com.br"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-6 inline-flex items-center gap-2 font-semibold text-primary transition-colors hover:text-primary-dark"
-              >
-                Conhecer o ConAid CBR Plus
-                <ExternalLink className="h-4 w-4" />
-              </a>
+              <p className="mt-4 leading-relaxed text-muted-foreground">
+                Na estabilização e pavimentação, a SBA trabalha com parceiros
+                especializados — como a{" "}
+                <strong className="text-foreground">Dynacal</strong>{" "}
+                (Estabilização e Pavimentação do Brasil), com mais de 40 anos de
+                estrada e obras por todo o país.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-x-6 gap-y-3">
+                <a
+                  href="https://conaidbrasil.com.br"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 font-semibold text-primary transition-colors hover:text-primary-dark"
+                >
+                  Conhecer o ConAid CBR Plus
+                  <ExternalLink className="h-4 w-4" />
+                </a>
+                <a
+                  href="https://dynacal.com.br"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 font-semibold text-primary transition-colors hover:text-primary-dark"
+                >
+                  Conhecer a Dynacal
+                  <ExternalLink className="h-4 w-4" />
+                </a>
+              </div>
             </div>
             <ul className="space-y-3 rounded-lg border border-primary/20 bg-primary/5 p-7">
               {CERTIFICACOES.map((c) => (

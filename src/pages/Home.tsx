@@ -169,6 +169,29 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Parceiros */}
+      <section className="border-t border-border bg-secondary/50">
+        <div className="container-sba py-12">
+          <p className="text-center text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+            Tecnologia e execução com parceiros estabelecidos
+          </p>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+            {[
+              "CSTR — tratamento e valorização de resíduos",
+              "ConAid CBR Plus — estabilização de solo",
+              "Dynacal — pavimentação",
+            ].map((p) => (
+              <span
+                key={p}
+                className="rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-primary-dark"
+              >
+                {p}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <SecaoCTA
         titulo="Quer saber por onde a sua cidade ou empresa pode começar?"
         texto="Conte o seu caso. No tributário, dado público e honorários só no êxito; nas demais frentes, um diagnóstico antes de qualquer compromisso."

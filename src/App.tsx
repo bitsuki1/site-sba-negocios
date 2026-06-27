@@ -7,6 +7,7 @@ import RecuperacaoTributaria from "@/pages/RecuperacaoTributaria";
 import Residuos from "@/pages/Residuos";
 import ResiduosHospitalares from "@/pages/ResiduosHospitalares";
 import EstabilizadorSolo from "@/pages/EstabilizadorSolo";
+import PaginaSolucao from "@/pages/PaginaSolucao";
 import Sobre from "@/pages/Sobre";
 import SejaParceiro from "@/pages/SejaParceiro";
 import Contato from "@/pages/Contato";
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="/residuos" element={<Residuos />} />
         <Route path="/residuos-hospitalares" element={<ResiduosHospitalares />} />
         <Route path="/estabilizador-de-solo" element={<EstabilizadorSolo />} />
+        <Route path="/solucoes/:slug" element={<PaginaSolucao />} />
         <Route path="/sobre" element={<Sobre />} />
         <Route path="/seja-um-parceiro" element={<SejaParceiro />} />
         <Route path="/contato" element={<Contato />} />
