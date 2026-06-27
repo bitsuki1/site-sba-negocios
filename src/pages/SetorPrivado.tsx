@@ -44,7 +44,7 @@ const SetorPrivado = () => {
       <SecaoCTA
         titulo="Tem um volume de resíduo que hoje é só custo e risco?"
         texto="Comece por um diagnóstico. A partir dele, decidimos juntos o melhor caminho de destinação e valorização — com valores sob consulta."
-        botao={{ label: "Conversar sobre o meu caso", href: "/contato" }}
+        botao={{ label: "Conversar sobre o resíduo que gero", href: "/contato" }}
       />
     </Layout>
   );

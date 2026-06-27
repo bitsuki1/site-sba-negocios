@@ -43,7 +43,7 @@ const SetorPublico = () => {
 
       <SecaoCTA
         titulo="Quer saber quanto a sua cidade tem a recuperar — ou destravar?"
-        texto="Comece pela recuperação tributária (dado público, honorários só no êxito) ou por um diagnóstico de resíduos, energia ou infraestrutura."
+        texto="Comece pela recuperação tributária (dado público, honorários só no êxito) ou por um diagnóstico de resíduos, energia ou infraestrutura — sem compromisso, e o resultado é seu."
         botao={{ label: "Solicitar um estudo da minha cidade", href: "/contato" }}
       />
     </Layout>

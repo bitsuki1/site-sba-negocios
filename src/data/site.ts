@@ -319,10 +319,10 @@ export const DESAFIOS: Record<Setor, { titulo: string; itens: string[] }> = {
   publico: {
     titulo: "Os desafios do município",
     itens: [
-      "Receita que é do município (IRRF) sem ser recuperada",
-      "Saturação dos aterros e resíduos sem destino adequado",
-      "Custos operacionais e conta de energia elevados",
-      "Projetos sustentáveis parados por falta de estruturação",
+      "Receita do próprio município (o IRRF retido dos fornecedores) que deixa de ser recuperada",
+      "Aterros saturados e resíduos urbanos sem destino adequado",
+      "Custos operacionais e conta de energia que pressionam o orçamento",
+      "Projetos sustentáveis parados por falta de estruturação técnica e jurídica",
     ],
   },
   privado: {
