@@ -27,6 +27,9 @@ type Status = "idle" | "enviando" | "ok" | "erro";
  */
 export const FormularioContato = ({ variante = "contato" }: FormularioContatoProps) => {
   const [status, setStatus] = useState<Status>("idle");
+  // Instante em que o formulário foi montado — usado no anti-spam: um envio
+  // quase instantâneo é robô. useState com inicializador roda uma única vez.
+  const [montadoEm] = useState(() => Date.now());
   const [dados, setDados] = useState({
     nome: "",
     email: "",
@@ -34,6 +37,7 @@ export const FormularioContato = ({ variante = "contato" }: FormularioContatoPro
     organizacao: "",
     perfil: "",
     mensagem: "",
+    hp: "", // honeypot anti-spam: humano nunca preenche
   });
 
   const ehParceiro = variante === "parceiro";
@@ -84,6 +88,9 @@ export const FormularioContato = ({ variante = "contato" }: FormularioContatoPro
         organizacao: limpar(dados.organizacao),
         perfil: ehParceiro ? limpar(dados.perfil) : null,
         mensagem: dados.mensagem.trim(),
+        // Sinais anti-spam validados na Edge Function (não atrapalham humanos):
+        hp: dados.hp,
+        elapsed_ms: Date.now() - montadoEm,
       },
     });
 
@@ -122,6 +129,7 @@ export const FormularioContato = ({ variante = "contato" }: FormularioContatoPro
               organizacao: "",
               perfil: "",
               mensagem: "",
+              hp: "",
             });
             setStatus("idle");
           }}
@@ -134,6 +142,25 @@ export const FormularioContato = ({ variante = "contato" }: FormularioContatoPro
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+      {/* Honeypot anti-spam: fora da tela, sem tab e sem autocomplete — humano
+          nunca vê nem preenche. Bots costumam preencher; a Edge Function
+          descarta silenciosamente quando vier com conteúdo. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-[9999px] h-0 w-0 overflow-hidden"
+      >
+        <label htmlFor="site_url">Não preencha este campo</label>
+        <input
+          id="site_url"
+          name="site_url"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={dados.hp}
+          onChange={(e) => atualizar("hp", e.target.value)}
+        />
+      </div>
+
       <div className="grid gap-5 sm:grid-cols-2">
         <div className="space-y-2">
           <Label htmlFor="nome">Nome completo</Label>
