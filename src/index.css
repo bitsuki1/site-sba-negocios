@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  SBA Negócios — tokens da marca
+  Azul institucional #2E5AAC  -> hsl(219 58% 43%)
+  Azul escuro      #1a3a5c    -> hsl(211 56% 23%)
+  Dourado (acento) #C9A227    -> hsl(45 67% 47%)
+  Verde discreto   #2F7D5B    -> hsl(150 46% 34%)
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 211 40% 16%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 211 40% 16%;
+
+    --primary: 219 58% 43%;
+    --primary-dark: 211 56% 23%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 213 30% 96%;
+    --secondary-foreground: 211 56% 23%;
+
+    --muted: 213 24% 95%;
+    --muted-foreground: 211 18% 42%;
+
+    --accent: 150 46% 34%;
+    --accent-foreground: 0 0% 100%;
+
+    --gold: 45 67% 47%;
+    --gold-foreground: 211 56% 18%;
+
+    --border: 213 24% 88%;
+    --input: 213 24% 88%;
+    --ring: 219 58% 43%;
+
+    --radius: 0.625rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "cv11", "ss01";
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight;
+  }
+
+  /* Acessibilidade: foco visível por teclado */
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+}
+
+@layer components {
+  .container-sba {
+    @apply container mx-auto px-6;
+  }
+
+  /* Filete dourado discreto usado como assinatura de marca */
+  .rule-gold {
+    @apply h-1 w-12 rounded-full bg-gold;
+  }
+}
+
+/* Respeita usuários que pedem menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
