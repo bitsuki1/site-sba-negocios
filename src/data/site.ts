@@ -157,7 +157,7 @@ export const SOLUCOES: Solucao[] = [
     resumo:
       "Tratamento de resíduos de serviços de saúde para hospitais, clínicas e laboratórios, com rastreabilidade do recolhimento à destinação final.",
     beneficio:
-      "Segurança sanitária e conformidade com as normas de saúde (ANVISA), sem dor de cabeça.",
+      "Segurança sanitária e conformidade (ANVISA), com rastreabilidade do recolhimento à destinação final.",
     icon: Syringe,
     href: "/residuos-hospitalares",
   },
@@ -328,10 +328,10 @@ export const DESAFIOS: Record<Setor, { titulo: string; itens: string[] }> = {
   privado: {
     titulo: "Os desafios das empresas",
     itens: [
-      "Custos logísticos elevados",
-      "Transporte e destinação de resíduos",
-      "Riscos ambientais",
-      "Exigências regulatórias",
+      "Custos de transporte e destinação que crescem com o volume e pesam no resultado",
+      "Logística reversa, licenças e rastreabilidade para destinar dentro da lei",
+      "Passivos ambientais que viram autuação e embargo — mesmo quando o erro é do transportador",
+      "Exigências da PNRS, dos órgãos ambientais e, na saúde, da ANVISA",
     ],
   },
 };

@@ -29,7 +29,7 @@ const Sobre = () => {
         compacto
         eyebrow="Sobre a SBA Negócios"
         titulo="A gestão que conecta as pontas."
-        subtitulo="A SBA Negócios é uma empresa de desenvolvimento de negócios e consultoria para os setores público e privado. Atuamos como gestora — uma espécie de PMO — que origina e estrutura projetos."
+        subtitulo="A SBA Negócios é uma empresa de desenvolvimento de negócios e consultoria para os setores público e privado. Atuamos como gestora de projetos: originamos, estruturamos e coordenamos — sem executar a obra diretamente."
       />
 
       <section className="bg-background">

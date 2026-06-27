@@ -10,8 +10,8 @@ const Contato = () => {
       <Hero
         compacto
         eyebrow="Contato"
-        titulo="Fale com a SBA Negócios."
-        subtitulo="Quer solicitar o estudo da sua cidade, conversar sobre um projeto de infraestrutura ou tirar uma dúvida? Estamos à disposição."
+        titulo="Dê o primeiro passo — a SBA organiza o caminho a partir daqui."
+        subtitulo="Seja prefeito, secretário ou gestor de empresa: conte o seu caso e a SBA indica o melhor primeiro passo, sem compromisso."
       />
 
       <section className="bg-background">
@@ -50,6 +50,14 @@ const Contato = () => {
                     >
                       {CONTATO.telefone}
                     </a>
+                    <a
+                      href={`https://wa.me/${CONTATO.whatsapp}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-1 inline-block text-sm font-semibold text-primary hover:text-primary-dark"
+                    >
+                      Chamar no WhatsApp →
+                    </a>
                   </div>
                 </li>
                 <li className="flex gap-4">
@@ -73,7 +81,8 @@ const Contato = () => {
                   <div>
                     <p className="font-semibold text-primary-dark">Atendimento</p>
                     <p className="mt-1 text-sm text-muted-foreground">
-                      Segunda a sexta, em horário comercial.
+                      Segunda a sexta, em horário comercial. Respondemos os
+                      formulários em até 1 dia útil.
                     </p>
                   </div>
                 </li>

@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
 import { SecaoCTA } from "@/components/SecaoCTA";
 import { CardSolucao } from "@/components/CardSolucao";
-import { TEMAS, solucoesPorTema } from "@/data/site";
+import { cn } from "@/lib/utils";
+import { TEMAS, solucoesPorTema, type Setor } from "@/data/site";
 
 const SUBTITULO_TEMA: Record<string, string> = {
   "Recuperação Tributária": "Receita que já é do município, de volta ao caixa.",
@@ -14,19 +16,56 @@ const SUBTITULO_TEMA: Record<string, string> = {
   Cultura: "Projetos culturais viáveis, com captação organizada.",
 };
 
+type Filtro = "todos" | Setor;
+
+const FILTROS: { id: Filtro; label: string }[] = [
+  { id: "todos", label: "Todas" },
+  { id: "publico", label: "Setor Público" },
+  { id: "privado", label: "Setor Privado" },
+];
+
 const Solucoes = () => {
+  const [filtro, setFiltro] = useState<Filtro>("todos");
+
   return (
     <Layout>
       <Hero
         compacto
         eyebrow="Soluções"
-        titulo="Tudo o que a SBA estrutura, em um só lugar."
+        titulo="Do tributário ao ambiental: onde a SBA pode atuar na sua realidade."
         subtitulo="Organizamos o portfólio por tema. Cada solução traz o benefício para o cliente; os valores das frentes ambientais e de infraestrutura ficam sob consulta, caso a caso. No tributário, é sempre piso estimado e pagamento no êxito."
         ctaPrincipal={{ label: "Falar com a SBA", href: "/contato" }}
       />
 
+      {/* Filtro por setor */}
+      <section className="border-b border-border bg-background">
+        <div className="container-sba flex flex-wrap items-center gap-3 py-6">
+          <span className="text-sm font-medium text-muted-foreground">
+            Filtrar por:
+          </span>
+          {FILTROS.map((f) => (
+            <button
+              key={f.id}
+              type="button"
+              onClick={() => setFiltro(f.id)}
+              aria-pressed={filtro === f.id}
+              className={cn(
+                "rounded-full px-4 py-1.5 text-sm font-semibold transition-colors",
+                filtro === f.id
+                  ? "bg-primary text-primary-foreground"
+                  : "border border-border bg-card text-primary-dark hover:bg-secondary"
+              )}
+            >
+              {f.label}
+            </button>
+          ))}
+        </div>
+      </section>
+
       {TEMAS.map((tema, i) => {
-        const solucoes = solucoesPorTema(tema);
+        const solucoes = solucoesPorTema(tema).filter(
+          (s) => filtro === "todos" || s.setores.includes(filtro)
+        );
         if (solucoes.length === 0) return null;
         return (
           <section

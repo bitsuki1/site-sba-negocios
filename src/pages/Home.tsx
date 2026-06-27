@@ -4,7 +4,7 @@ import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
 import { SecaoCTA } from "@/components/SecaoCTA";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { SETORES, solucoesPorSetor } from "@/data/site";
+import { SETORES, solucoesPorSetor, PARCEIRO_CSTR } from "@/data/site";
 
 const PROVAS = [
   {
@@ -39,9 +39,9 @@ const Home = () => {
       <Hero
         eyebrow="SBA Negócios"
         titulo="Estruturamos negócios para o setor público e privado."
-        subtitulo="A SBA é a gestão que conecta as pontas — cliente, técnico, jurídico e tecnologia. Originamos e estruturamos projetos; não executamos obra. Da recuperação tributária do município à valorização de resíduos."
-        ctaPrincipal={{ label: "Ver soluções", href: "/solucoes" }}
-        ctaSecundario={{ label: "Falar com a SBA", href: "/contato" }}
+        subtitulo="A SBA origina e estrutura projetos para prefeituras e empresas — com o jurídico, o técnico e a tecnologia já montados, sem você ter que resolver cada parte separada. Da recuperação tributária do município à valorização de resíduos."
+        ctaPrincipal={{ label: "Falar com a SBA", href: "/contato" }}
+        ctaSecundario={{ label: "Ver soluções", href: "/solucoes" }}
       />
 
       {/* Duas portas — por setor */}
@@ -54,7 +54,7 @@ const Home = () => {
             </h2>
             <p className="mt-4 text-muted-foreground">
               A SBA atua em duas frentes, com soluções organizadas para quem
-              decide. Escolha a sua porta.
+              decide. Identifique o seu perfil.
             </p>
           </div>
 
@@ -112,8 +112,8 @@ const Home = () => {
               Por que confiar na SBA
             </h2>
             <p className="mt-4 text-muted-foreground">
-              Trabalho sério é trabalho que você consegue verificar. Estes são os
-              nossos princípios.
+              Transparência como método de trabalho: tudo o que fazemos pode ser
+              conferido. Estes são os nossos princípios.
             </p>
           </div>
 
@@ -147,7 +147,7 @@ const Home = () => {
           <div className="mx-auto max-w-3xl text-center">
             <div className="mx-auto mb-5 rule-gold" />
             <h2 className="font-display text-3xl font-bold text-primary-dark">
-              A SBA não executa. A SBA conecta.
+              A SBA orquestra — você não gerencia dez fornecedores.
             </h2>
             <p className="mt-4 leading-relaxed text-muted-foreground">
               Funcionamos como um hub: originamos o projeto, organizamos o
@@ -169,9 +169,9 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Parceiros */}
+      {/* Parceiros + prova */}
       <section className="border-t border-border bg-secondary/50">
-        <div className="container-sba py-12">
+        <div className="container-sba py-14">
           <p className="text-center text-sm font-semibold uppercase tracking-wide text-muted-foreground">
             Tecnologia e execução com parceiros estabelecidos
           </p>
@@ -188,6 +188,49 @@ const Home = () => {
                 {p}
               </span>
             ))}
+          </div>
+
+          {/* Destaque: parceria CSTR (fatos divulgados pelo parceiro) */}
+          <div className="mx-auto mt-10 max-w-3xl rounded-lg border border-border bg-card p-7 md:p-8">
+            <p className="text-xs font-semibold uppercase tracking-wide text-gold-foreground">
+              Parceria em destaque
+            </p>
+            <h3 className="mt-2 font-display text-xl font-semibold text-primary-dark">
+              {PARCEIRO_CSTR.nome} — {PARCEIRO_CSTR.nomeCompleto}
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              {PARCEIRO_CSTR.chamada}
+            </p>
+            <div className="mt-6 grid gap-5 sm:grid-cols-3">
+              <div>
+                <p className="font-display text-lg font-bold text-primary">
+                  {PARCEIRO_CSTR.projeto.local}
+                </p>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                  {PARCEIRO_CSTR.projeto.titulo} — {PARCEIRO_CSTR.projeto.status}
+                </p>
+              </div>
+              <div>
+                <p className="font-display text-lg font-bold text-primary">
+                  50–300 t/dia
+                </p>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                  Capacidade das plantas de resíduos sólidos urbanos (modular e
+                  escalável).
+                </p>
+              </div>
+              <div>
+                <p className="font-display text-lg font-bold text-primary">
+                  Startup do ano
+                </p>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                  Reconhecimento da CSTR para a Indústria 4.0.
+                </p>
+              </div>
+            </div>
+            <p className="mt-6 text-xs text-muted-foreground">
+              Marcos e dados técnicos divulgados pelo parceiro CSTR.
+            </p>
           </div>
         </div>
       </section>

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail, MessageCircle } from "lucide-react";
 import { NAV, CONTATO, MARCA } from "@/data/site";
 import logoSba from "@/assets/sba-logo-flat.png";
 
@@ -57,6 +57,17 @@ export const Footer = () => {
               <Phone className="h-4 w-4 shrink-0 text-gold" />
               <a href={`tel:${CONTATO.telefoneLink}`} className="hover:text-primary-foreground">
                 {CONTATO.telefone}
+              </a>
+            </li>
+            <li className="flex items-center gap-3">
+              <MessageCircle className="h-4 w-4 shrink-0 text-gold" />
+              <a
+                href={`https://wa.me/${CONTATO.whatsapp}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary-foreground"
+              >
+                WhatsApp
               </a>
             </li>
             <li className="flex items-center gap-3">
