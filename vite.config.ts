@@ -4,6 +4,9 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  // Caminho base: "/" em dev/Vercel; no GitHub Pages (projeto) o workflow
+  // define BASE_PATH="/site-sba-negocios/" para servir sob o subcaminho.
+  base: process.env.BASE_PATH || "/",
   server: {
     host: "::",
     port: 8080,
