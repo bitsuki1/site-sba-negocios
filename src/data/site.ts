@@ -1,15 +1,20 @@
 // ============================================================================
 // SBA Negócios — conteúdo central do site
-// Edite aqui os dados que se repetem (contato, navegação, frentes da Área B).
+// Edite aqui os dados que se repetem (contato, navegação, setores, soluções).
 // Marca: sempre "SBA Negócios". Nunca use marcas antigas.
 // ============================================================================
 
 import {
-  Flame,
+  Landmark,
+  Recycle,
+  Factory,
+  Syringe,
+  SunMedium,
+  Lightbulb,
   TreePine,
+  Droplets,
   Layers,
   CalendarRange,
-  SunMedium,
   type LucideIcon,
 } from "lucide-react";
 
@@ -26,100 +31,202 @@ export const CONTATO = {
   telefoneLink: "+5511991574850",
   whatsapp: "5511991574850",
   email: "eduardo@saobentoservicos.com.br",
-  // TODO: definir domínio final (ex.: sbanegocios.com.br)
   dominio: "sbanegocios.com.br",
 };
 
 export const NAV = [
   { label: "Início", href: "/" },
-  { label: "Recuperação Tributária", href: "/recuperacao-tributaria" },
-  { label: "Resíduos & Infraestrutura", href: "/residuos-infraestrutura" },
+  { label: "Setor Público", href: "/setor-publico" },
+  { label: "Setor Privado", href: "/setor-privado" },
+  { label: "Soluções", href: "/solucoes" },
   { label: "Sobre", href: "/sobre" },
-  { label: "Seja um parceiro", href: "/seja-um-parceiro" },
   { label: "Contato", href: "/contato" },
 ];
 
-export interface Area {
-  id: string;
+// ----------------------------------------------------------------------------
+// Setores — as duas "portas" do site
+// ----------------------------------------------------------------------------
+export type Setor = "publico" | "privado";
+
+export interface SetorInfo {
+  id: Setor;
   titulo: string;
+  publico: string; // quem é
   resumo: string;
   href: string;
 }
 
-export const AREAS: Area[] = [
+export const SETORES: SetorInfo[] = [
   {
-    id: "tributaria",
-    titulo: "Recuperação Tributária",
+    id: "publico",
+    titulo: "Setor Público",
+    publico: "Prefeituras e consórcios",
     resumo:
-      "Com a decisão definitiva do STF (Tema 1130), o IRRF retido nos pagamentos do município aos seus fornecedores pertence ao próprio município. A SBA levanta, nas contas públicas, quanto há a recuperar dos últimos 5 anos e quanto passa a entrar daqui pra frente. Honorários 100% no êxito.",
-    href: "/recuperacao-tributaria",
+      "Recuperação de receita (Tema 1130), resíduos urbanos, energia e infraestrutura — sempre com dado público, método auditável e o arranjo técnico-jurídico montado pela SBA.",
+    href: "/setor-publico",
   },
   {
-    id: "residuos",
-    titulo: "Resíduos & Infraestrutura Ambiental",
+    id: "privado",
+    titulo: "Setor Privado",
+    publico: "Empresas, indústria e saúde",
     resumo:
-      "No modelo Hub Conector, a SBA liga prefeitura, operador, tecnologia e jurídico — do teaser ao contrato. Cinco frentes, de usina de resíduos a energia solar e iluminação pública, sempre com foco em economia, receita nova e conformidade.",
-    href: "/residuos-infraestrutura",
+      "Destinação e valorização de resíduos para grandes geradores e para o setor hospitalar, com conformidade legal, rastreabilidade e parceiros que executam.",
+    href: "/setor-privado",
   },
 ];
 
-export interface Frente {
+// ----------------------------------------------------------------------------
+// Temas — eixos de solução (usados na página Soluções)
+// ----------------------------------------------------------------------------
+export const TEMAS = [
+  "Recuperação Tributária",
+  "Resíduos & Valorização",
+  "Energia & Eficiência",
+  "Ambiental",
+  "Infraestrutura",
+  "Cultura",
+] as const;
+
+export type Tema = (typeof TEMAS)[number];
+
+// ----------------------------------------------------------------------------
+// Soluções — fonte única do portfólio (alimenta hubs e página Soluções)
+// Regra de honestidade: tributário = "no êxito"; demais = "valores sob consulta".
+// ----------------------------------------------------------------------------
+export interface Solucao {
   id: string;
   titulo: string;
-  descricao: string;
+  tema: Tema;
+  setores: Setor[];
+  resumo: string;
   beneficio: string;
   icon: LucideIcon;
+  href?: string; // página dedicada, quando existir
   destaque?: boolean;
 }
 
-export const FRENTES: Frente[] = [
+export const SOLUCOES: Solucao[] = [
   {
-    id: "waste-to-energy",
-    titulo: "Usina de Resíduos (Waste-to-Energy)",
-    descricao:
-      "O lixo urbano deixa de ser custo e passa a gerar energia. É o nosso carro-chefe na Área B.",
+    id: "tema-1130",
+    titulo: "Recuperação Tributária — Tema 1130",
+    tema: "Recuperação Tributária",
+    setores: ["publico"],
+    resumo:
+      "O STF decidiu, em definitivo, que o IRRF retido nos pagamentos do município aos seus fornecedores é do próprio município. A SBA levanta, no dado público, quanto há a recuperar dos últimos 5 anos e quanto passa a entrar daqui pra frente.",
     beneficio:
-      "Destinação adequada dos resíduos, redução de aterro e uma nova fonte de energia para o município.",
-    icon: Flame,
+      "Receita recuperada e nova arrecadação recorrente — com honorários 100% no êxito.",
+    icon: Landmark,
+    href: "/recuperacao-tributaria",
     destaque: true,
   },
   {
-    id: "recompor-reflorestar",
-    titulo: "Recompor & Reflorestar",
-    descricao:
-      "Restauração e reflorestamento de áreas, com possibilidade de geração de crédito de carbono.",
+    id: "residuos-municipal",
+    titulo: "Resíduos Sólidos Urbanos (município)",
+    tema: "Resíduos & Valorização",
+    setores: ["publico"],
+    resumo:
+      "Estruturação de usina de tratamento e valorização do lixo urbano para prefeituras e consórcios — do teaser ao contrato, com operador e tecnologia parceiros.",
     beneficio:
-      "Conformidade ambiental, recuperação de áreas degradadas e potencial de receita com carbono.",
+      "Destinação adequada, menos aterro e potencial de energia e receita nova para o município.",
+    icon: Recycle,
+    href: "/residuos",
+    destaque: true,
+  },
+  {
+    id: "residuos-grandes-geradores",
+    titulo: "Resíduos de Grandes Geradores",
+    tema: "Resíduos & Valorização",
+    setores: ["privado"],
+    resumo:
+      "Solução de destinação e valorização para indústria, comércio e agro que geram grande volume de resíduos.",
+    beneficio:
+      "Conformidade com a Política Nacional de Resíduos, menos passivo ambiental e custo sob controle.",
+    icon: Factory,
+    href: "/residuos",
+  },
+  {
+    id: "residuos-hospitalar",
+    titulo: "Resíduos Hospitalares (RSS)",
+    tema: "Resíduos & Valorização",
+    setores: ["privado"],
+    resumo:
+      "Tratamento de resíduos de serviços de saúde para hospitais, clínicas e laboratórios, com rastreabilidade do recolhimento à destinação final.",
+    beneficio:
+      "Segurança sanitária e conformidade com as normas de saúde (ANVISA), sem dor de cabeça.",
+    icon: Syringe,
+    href: "/residuos",
+  },
+  {
+    id: "energia-fotovoltaica",
+    titulo: "Energia Fotovoltaica",
+    tema: "Energia & Eficiência",
+    setores: ["publico"],
+    resumo:
+      "Usinas solares para abastecer prédios públicos, estruturadas com parceiros de engenharia e jurídico.",
+    beneficio: "Economia direta e previsível na conta de energia do município.",
+    icon: SunMedium,
+  },
+  {
+    id: "iluminacao-publica",
+    titulo: "Iluminação Pública",
+    tema: "Energia & Eficiência",
+    setores: ["publico"],
+    resumo:
+      "Modernização da iluminação municipal (LED e telegestão), do diagnóstico ao modelo de contratação.",
+    beneficio: "Conta de energia menor e uma cidade mais bem iluminada e segura.",
+    icon: Lightbulb,
+  },
+  {
+    id: "reflorestamento-carbono",
+    titulo: "Reflorestamento & Crédito de Carbono",
+    tema: "Ambiental",
+    setores: ["publico", "privado"],
+    resumo:
+      "Restauração e reflorestamento de áreas, com possibilidade de gerar crédito de carbono.",
+    beneficio:
+      "Conformidade ambiental, áreas recuperadas e potencial de receita com carbono.",
     icon: TreePine,
+  },
+  {
+    id: "saneamento-agua",
+    titulo: "Saneamento & Água (ETA/ETE)",
+    tema: "Ambiental",
+    setores: ["publico"],
+    resumo:
+      "Estruturação de projetos de tratamento de água e esgoto, alinhados ao Novo Marco do Saneamento.",
+    beneficio:
+      "Conformidade legal e saúde pública, com o arranjo técnico e financeiro montado.",
+    icon: Droplets,
   },
   {
     id: "estabilizador-solo",
     titulo: "Estabilizador de Solo",
-    descricao:
-      "Solução para obras e infraestrutura que melhora a base do solo onde se vai construir.",
+    tema: "Infraestrutura",
+    setores: ["publico", "privado"],
+    resumo:
+      "Solução de estabilização de solo para obras e infraestrutura, pública ou privada.",
     beneficio:
-      "Mais durabilidade nas obras e redução de custos de manutenção ao longo do tempo.",
+      "Obras mais duráveis e menos custo de manutenção ao longo do tempo.",
     icon: Layers,
   },
   {
     id: "eventos-cultura",
     titulo: "Eventos & Projetos Culturais",
-    descricao:
+    tema: "Cultura",
+    setores: ["publico"],
+    resumo:
       "Estruturação e captação de recursos para eventos e projetos culturais do município.",
-    beneficio:
-      "Movimentação da economia local e projetos viáveis, com captação organizada.",
+    beneficio: "Economia local movimentada e projetos viáveis, com captação organizada.",
     icon: CalendarRange,
   },
-  {
-    id: "energia-fotovoltaica",
-    titulo: "Energia: Fotovoltaica & Iluminação Pública",
-    descricao:
-      "Usinas solares para abastecer prédios públicos e modernização da iluminação municipal.",
-    beneficio:
-      "Economia direta na conta de energia e iluminação pública mais eficiente.",
-    icon: SunMedium,
-  },
 ];
+
+// Helpers
+export const solucoesPorSetor = (setor: Setor) =>
+  SOLUCOES.filter((s) => s.setores.includes(setor));
+
+export const solucoesPorTema = (tema: Tema) =>
+  SOLUCOES.filter((s) => s.tema === tema);
 
 // Passos didáticos da Recuperação Tributária
 export const PASSOS_TRIBUTARIO = [

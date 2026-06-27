@@ -4,7 +4,7 @@ import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
 import { SecaoCTA } from "@/components/SecaoCTA";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { AREAS } from "@/data/site";
+import { SETORES, solucoesPorSetor } from "@/data/site";
 
 const PROVAS = [
   {
@@ -27,9 +27,9 @@ const PROVAS = [
   },
   {
     icon: Scale,
-    titulo: "Boa gestão fiscal",
+    titulo: "Boa gestão",
     texto:
-      "Recuperar o que é do município é também um dever de boa gestão, alinhado à Lei de Responsabilidade Fiscal (LRF).",
+      "Recuperar receita e destravar projetos é dever de boa gestão — alinhado à Lei de Responsabilidade Fiscal e à conformidade ambiental.",
   },
 ];
 
@@ -39,47 +39,67 @@ const Home = () => {
       <Hero
         eyebrow="SBA Negócios"
         titulo="Estruturamos negócios para o setor público e privado."
-        subtitulo="A SBA é a gestão que conecta as pontas — cliente, técnico, jurídico e tecnologia. Originamos e estruturamos projetos: da recuperação tributária do município à infraestrutura ambiental."
-        ctaPrincipal={{ label: "Conhecer as soluções", href: "/recuperacao-tributaria" }}
+        subtitulo="A SBA é a gestão que conecta as pontas — cliente, técnico, jurídico e tecnologia. Originamos e estruturamos projetos; não executamos obra. Da recuperação tributária do município à valorização de resíduos."
+        ctaPrincipal={{ label: "Ver soluções", href: "/solucoes" }}
         ctaSecundario={{ label: "Falar com a SBA", href: "/contato" }}
       />
 
-      {/* Áreas de atuação */}
+      {/* Duas portas — por setor */}
       <section className="bg-background">
         <div className="container-sba py-20">
           <div className="mx-auto max-w-2xl text-center">
             <div className="mx-auto mb-5 rule-gold" />
             <h2 className="font-display text-3xl font-bold text-primary-dark">
-              Duas áreas, um jeito de trabalhar
+              Por onde você começa
             </h2>
             <p className="mt-4 text-muted-foreground">
-              A SBA não executa obra. Atuamos como gestora: organizamos o projeto,
-              conectamos quem precisa estar junto e conduzimos até o resultado.
+              A SBA atua em duas frentes, com soluções organizadas para quem
+              decide. Escolha a sua porta.
             </p>
           </div>
 
           <div className="mt-12 grid gap-6 md:grid-cols-2">
-            {AREAS.map((area) => (
-              <Card key={area.id} className="flex h-full flex-col transition-shadow hover:shadow-md">
-                <CardHeader>
-                  <CardTitle className="text-2xl text-primary-dark">
-                    {area.titulo}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="flex flex-1 flex-col">
-                  <p className="flex-1 leading-relaxed text-muted-foreground">
-                    {area.resumo}
-                  </p>
-                  <Link
-                    to={area.href}
-                    className="mt-6 inline-flex items-center gap-2 font-semibold text-primary transition-colors hover:text-primary-dark"
-                  >
-                    Ver detalhes
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </CardContent>
-              </Card>
-            ))}
+            {SETORES.map((setor) => {
+              const exemplos = solucoesPorSetor(setor.id).slice(0, 4);
+              return (
+                <Card
+                  key={setor.id}
+                  className="flex h-full flex-col transition-shadow hover:shadow-md"
+                >
+                  <CardHeader>
+                    <p className="text-xs font-semibold uppercase tracking-wide text-gold-foreground">
+                      {setor.publico}
+                    </p>
+                    <CardTitle className="mt-1 text-2xl text-primary-dark">
+                      {setor.titulo}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="flex flex-1 flex-col">
+                    <p className="leading-relaxed text-muted-foreground">
+                      {setor.resumo}
+                    </p>
+                    <ul className="mt-5 flex flex-wrap gap-2">
+                      {exemplos.map((s) => (
+                        <li
+                          key={s.id}
+                          className="rounded-full bg-secondary px-3 py-1 text-xs font-medium text-primary-dark"
+                        >
+                          {s.titulo}
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="flex-1" />
+                    <Link
+                      to={setor.href}
+                      className="mt-6 inline-flex items-center gap-2 font-semibold text-primary transition-colors hover:text-primary-dark"
+                    >
+                      Ver soluções para {setor.titulo.toLowerCase()}
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -121,10 +141,38 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Hub Conector */}
+      <section className="bg-background">
+        <div className="container-sba py-16 md:py-20">
+          <div className="mx-auto max-w-3xl text-center">
+            <div className="mx-auto mb-5 rule-gold" />
+            <h2 className="font-display text-3xl font-bold text-primary-dark">
+              A SBA não executa. A SBA conecta.
+            </h2>
+            <p className="mt-4 leading-relaxed text-muted-foreground">
+              Funcionamos como um hub: originamos o projeto, organizamos o
+              problema e ligamos prefeitura ou empresa aos operadores e às
+              tecnologias parceiras que executam. Quem opera a usina, planta a
+              floresta ou instala a usina solar é o parceiro especializado — o
+              nosso papel é fazer o projeto acontecer e manter tudo coordenado.
+            </p>
+            <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
+              <Link
+                to="/solucoes"
+                className="inline-flex items-center justify-center gap-2 font-semibold text-primary transition-colors hover:text-primary-dark"
+              >
+                Conhecer todas as soluções
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <SecaoCTA
-        titulo="Quer saber quanto a sua cidade tem a recuperar?"
-        texto="Solicite um estudo da sua cidade. Dado público, método auditável e honorários só no êxito."
-        botao={{ label: "Solicitar estudo da minha cidade", href: "/contato" }}
+        titulo="Quer saber por onde a sua cidade ou empresa pode começar?"
+        texto="Conte o seu caso. No tributário, dado público e honorários só no êxito; nas demais frentes, um diagnóstico antes de qualquer compromisso."
+        botao={{ label: "Falar com a SBA", href: "/contato" }}
       />
     </Layout>
   );

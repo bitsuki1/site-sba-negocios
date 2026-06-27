@@ -28,7 +28,7 @@ export const Footer = () => {
             Navegação
           </h3>
           <ul className="mt-4 space-y-2.5">
-            {NAV.map((item) => (
+            {[...NAV, { label: "Seja um parceiro", href: "/seja-um-parceiro" }].map((item) => (
               <li key={item.href}>
                 <Link
                   to={item.href}
