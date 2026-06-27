@@ -18,8 +18,11 @@ type Status = "idle" | "enviando" | "ok" | "erro";
 /**
  * Formulário reutilizável de contato.
  *
- * Grava o lead na tabela `sba_leads` do Supabase (projeto gestao-integrada-dados).
- * Se a gravação falhar por qualquer motivo, cai num fallback por e-mail (mailto)
+ * Envia o lead para a Edge Function `submit-lead` do Supabase (projeto
+ * gestao-integrada-dados), que grava na tabela `sba_leads` com a service role.
+ * O site nunca escreve direto na tabela: nesta base o papel `anon` é proibido
+ * de inserir/ler (trava de segurança), por isso o caminho oficial é a função.
+ * Se o envio falhar por qualquer motivo, cai num fallback por e-mail (mailto)
  * para que nenhum contato se perca.
  */
 export const FormularioContato = ({ variante = "contato" }: FormularioContatoProps) => {
@@ -72,19 +75,25 @@ export const FormularioContato = ({ variante = "contato" }: FormularioContatoPro
 
     setStatus("enviando");
 
-    const { error } = await supabase.from("sba_leads").insert({
-      tipo: variante,
-      nome: dados.nome.trim(),
-      email: dados.email.trim(),
-      telefone: limpar(dados.telefone),
-      organizacao: limpar(dados.organizacao),
-      perfil: ehParceiro ? limpar(dados.perfil) : null,
-      mensagem: dados.mensagem.trim(),
-      origem: "site-sba-negocios",
+    const { data, error } = await supabase.functions.invoke("submit-lead", {
+      body: {
+        tipo: variante,
+        nome: dados.nome.trim(),
+        email: dados.email.trim(),
+        telefone: limpar(dados.telefone),
+        organizacao: limpar(dados.organizacao),
+        perfil: ehParceiro ? limpar(dados.perfil) : null,
+        mensagem: dados.mensagem.trim(),
+      },
     });
 
-    if (error) {
-      console.error("Erro ao gravar lead:", error.message);
+    // `invoke` devolve `error` em qualquer resposta não-2xx; a função também
+    // pode responder 200 com `{ error }` — cobrimos os dois casos.
+    if (error || (data as { error?: string } | null)?.error) {
+      console.error(
+        "Erro ao enviar lead:",
+        error?.message ?? (data as { error?: string }).error
+      );
       setStatus("erro");
       return;
     }
