@@ -1,8 +1,9 @@
+import { Check, ExternalLink } from "lucide-react";
 import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
 import { SecaoCTA } from "@/components/SecaoCTA";
 import { CardSolucao } from "@/components/CardSolucao";
-import { solucoesPorTema } from "@/data/site";
+import { solucoesPorTema, PARCEIRO_CSTR } from "@/data/site";
 
 const ESTAGIOS = [
   {
@@ -100,36 +101,57 @@ const Residuos = () => {
         </div>
       </section>
 
-      {/* Tecnologia dos parceiros */}
+      {/* Tecnologia do parceiro CSTR */}
       <section className="bg-background">
         <div className="container-sba py-16 md:py-20">
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
             <div>
               <div className="rule-gold mb-5" />
-              <h2 className="font-display text-3xl font-bold text-primary-dark">
-                A tecnologia vem de parceiros
+              <p className="text-sm font-semibold uppercase tracking-wide text-gold-foreground">
+                Parceiro de tecnologia
+              </p>
+              <h2 className="mt-1 font-display text-3xl font-bold text-primary-dark">
+                A tecnologia vem do {PARCEIRO_CSTR.nome}
               </h2>
-              <div className="mt-5 space-y-4 text-muted-foreground">
-                <p>
-                  A SBA trabalha com uma rede de parceiros de tecnologia e
-                  operação para transformar resíduo em energia, biocombustível,
-                  biofertilizante e outros produtos — conforme o tipo de material
-                  e a realidade de cada cliente.
-                </p>
-                <p>
-                  Isso significa que o município ou a empresa não precisa
-                  escolher uma tecnologia sozinho: a SBA traz a opção adequada,
-                  com quem já tem solução validada e em operação.
-                </p>
-              </div>
+              <p className="mt-2 text-sm text-muted-foreground">
+                {PARCEIRO_CSTR.nomeCompleto}
+              </p>
+              <p className="mt-5 leading-relaxed text-muted-foreground">
+                {PARCEIRO_CSTR.chamada} Assim, o município ou a empresa não
+                precisa escolher uma tecnologia sozinho: a SBA estrutura o
+                projeto e o {PARCEIRO_CSTR.nome} traz a solução validada e a
+                operação.
+              </p>
+              <a
+                href={PARCEIRO_CSTR.site}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-flex items-center gap-2 font-semibold text-primary transition-colors hover:text-primary-dark"
+              >
+                Conhecer o {PARCEIRO_CSTR.nome}
+                <ExternalLink className="h-4 w-4" />
+              </a>
             </div>
+
             <div className="rounded-lg border border-primary/20 bg-primary/5 p-7">
-              <h3 className="font-display text-xl font-semibold text-primary-dark">
-                Economia circular, na prática
+              <h3 className="font-display text-lg font-semibold text-primary-dark">
+                O que o {PARCEIRO_CSTR.nome} entrega
               </h3>
-              <p className="mt-3 text-muted-foreground">
+              <ul className="mt-5 space-y-3">
+                {PARCEIRO_CSTR.entregas.map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent">
+                      <Check className="h-3.5 w-3.5" />
+                    </span>
+                    <span className="text-sm leading-relaxed text-foreground/90">
+                      {item}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-5 border-t border-primary/15 pt-4 text-sm text-muted-foreground">
                 O objetivo é simples: tirar o resíduo do aterro e do passivo
-                ambiental e colocá-lo de volta como valor — energia, receita ou
+                ambiental e devolvê-lo como valor — energia, receita ou
                 conformidade. Os números variam caso a caso e ficam sob consulta.
               </p>
             </div>

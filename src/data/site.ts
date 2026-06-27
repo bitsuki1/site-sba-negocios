@@ -228,6 +228,23 @@ export const solucoesPorSetor = (setor: Setor) =>
 export const solucoesPorTema = (tema: Tema) =>
   SOLUCOES.filter((s) => s.tema === tema);
 
+// ----------------------------------------------------------------------------
+// Parceiro de tecnologia — CSTR (conteúdo cedido pelo parceiro)
+// ----------------------------------------------------------------------------
+export const PARCEIRO_CSTR = {
+  nome: "CSTR",
+  nomeCompleto: "Centro Sustentável de Tratamento de Resíduos",
+  site: "https://cstr.eco.br",
+  chamada:
+    "Para transformar resíduo em energia, a SBA trabalha com o CSTR. Ele projeta, implanta e gerencia plantas de tratamento de resíduos — transformando passivos ambientais em ativos econômicos.",
+  entregas: [
+    "Energia elétrica, biogás, biometano e biofertilizante",
+    "Plantas de resíduos projetadas, implantadas e gerenciadas",
+    "Tecnologia TermoBiogás Up, validada (TRL-9) com apoio da FINEP e da UFOP",
+    "Premiada no Troféu Frotas & Fretes Verdes 2025 (Startup do ano — Indústria 4.0)",
+  ],
+};
+
 // Passos didáticos da Recuperação Tributária
 export const PASSOS_TRIBUTARIO = [
   {
