@@ -31,6 +31,7 @@ NAME="$(git log -1 --format='%an')"
 EMAIL="$(git log -1 --format='%ae')"
 TMP="$(mktemp -d)"
 cp -a dist/. "$TMP/"
+rm -rf "$TMP/.git"   # caso um deploy anterior tenha deixado .git dentro de dist/
 (
   cd "$TMP"
   git init -q
