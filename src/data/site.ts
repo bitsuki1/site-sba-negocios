@@ -133,7 +133,7 @@ export const PASSOS_TRIBUTARIO = [
     numero: "02",
     titulo: "Estudo da sua cidade",
     texto:
-      "Você recebe um estudo com o valor de piso estimado e o método utilizado — dado público e auditxe1vel, sem nenhum custo antecipado.",
+      "Você recebe um estudo com o valor de piso estimado e o método utilizado — dado público e auditável, sem nenhum custo antecipado.",
   },
   {
     numero: "03",
