@@ -5,6 +5,7 @@ import SetorPrivado from "@/pages/SetorPrivado";
 import Solucoes from "@/pages/Solucoes";
 import RecuperacaoTributaria from "@/pages/RecuperacaoTributaria";
 import Residuos from "@/pages/Residuos";
+import ResiduosHospitalares from "@/pages/ResiduosHospitalares";
 import Sobre from "@/pages/Sobre";
 import SejaParceiro from "@/pages/SejaParceiro";
 import Contato from "@/pages/Contato";
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/solucoes" element={<Solucoes />} />
         <Route path="/recuperacao-tributaria" element={<RecuperacaoTributaria />} />
         <Route path="/residuos" element={<Residuos />} />
+        <Route path="/residuos-hospitalares" element={<ResiduosHospitalares />} />
         <Route path="/sobre" element={<Sobre />} />
         <Route path="/seja-um-parceiro" element={<SejaParceiro />} />
         <Route path="/contato" element={<Contato />} />

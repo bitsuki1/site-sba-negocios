@@ -2,6 +2,7 @@ import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
 import { SecaoCTA } from "@/components/SecaoCTA";
 import { CardSolucao } from "@/components/CardSolucao";
+import { FaixaDesafios } from "@/components/FaixaDesafios";
 import { solucoesPorSetor } from "@/data/site";
 
 const SetorPrivado = () => {
@@ -16,6 +17,8 @@ const SetorPrivado = () => {
         subtitulo="Para grandes geradores e para o setor hospitalar, a SBA estrutura a destinação e a valorização dos resíduos com conformidade legal, rastreabilidade e parceiros que operam — sem que a sua empresa precise virar especialista no assunto."
         ctaPrincipal={{ label: "Falar com a SBA", href: "/contato" }}
       />
+
+      <FaixaDesafios setor="privado" />
 
       <section className="bg-background">
         <div className="container-sba py-16 md:py-20">

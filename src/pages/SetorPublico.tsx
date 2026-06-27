@@ -2,6 +2,7 @@ import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
 import { SecaoCTA } from "@/components/SecaoCTA";
 import { CardSolucao } from "@/components/CardSolucao";
+import { FaixaDesafios } from "@/components/FaixaDesafios";
 import { solucoesPorSetor } from "@/data/site";
 
 const SetorPublico = () => {
@@ -16,6 +17,8 @@ const SetorPublico = () => {
         subtitulo="Para prefeituras e consórcios, a SBA recupera receita que é do município, estrutura a destinação dos resíduos urbanos e destrava projetos de energia e infraestrutura — sempre com dado público e método auditável."
         ctaPrincipal={{ label: "Solicitar um diagnóstico", href: "/contato" }}
       />
+
+      <FaixaDesafios setor="publico" />
 
       <section className="bg-background">
         <div className="container-sba py-16 md:py-20">

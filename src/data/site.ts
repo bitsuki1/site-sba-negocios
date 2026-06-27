@@ -159,7 +159,7 @@ export const SOLUCOES: Solucao[] = [
     beneficio:
       "Segurança sanitária e conformidade com as normas de saúde (ANVISA), sem dor de cabeça.",
     icon: Syringe,
-    href: "/residuos",
+    href: "/residuos-hospitalares",
   },
   {
     id: "energia-fotovoltaica",
@@ -304,6 +304,30 @@ export const PARCEIRO_CSTR = {
       status: "Em desenvolvimento (PD&I)",
     },
   ] as SistemaCSTR[],
+};
+
+// ----------------------------------------------------------------------------
+// Desafios por setor — abertura dos hubs (inspirado no material do parceiro)
+// ----------------------------------------------------------------------------
+export const DESAFIOS: Record<Setor, { titulo: string; itens: string[] }> = {
+  publico: {
+    titulo: "Os desafios do município",
+    itens: [
+      "Receita que é do município (IRRF) sem ser recuperada",
+      "Saturação dos aterros e resíduos sem destino adequado",
+      "Custos operacionais e conta de energia elevados",
+      "Projetos sustentáveis parados por falta de estruturação",
+    ],
+  },
+  privado: {
+    titulo: "Os desafios das empresas",
+    itens: [
+      "Custos logísticos elevados",
+      "Transporte e destinação de resíduos",
+      "Riscos ambientais",
+      "Exigências regulatórias",
+    ],
+  },
 };
 
 // Passos didáticos da Recuperação Tributária
