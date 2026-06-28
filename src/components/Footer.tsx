@@ -12,7 +12,7 @@ export const Footer = () => {
         {/* Marca */}
         <div>
           <span className="inline-flex rounded-lg bg-primary-foreground px-3 py-2">
-            <img src={logoSba} alt="SBA Negócios" className="h-9 w-auto" />
+            <img src={logoSba} alt="SBA Negócios" className="h-9 w-auto" loading="lazy" />
           </span>
           <p className="mt-4 max-w-xs text-sm text-primary-foreground/75">
             {MARCA.tagline} para os setores público e privado. Gestão que conecta

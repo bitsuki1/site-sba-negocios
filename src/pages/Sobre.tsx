@@ -140,6 +140,7 @@ const Sobre = () => {
                       src={m.foto}
                       alt={m.nome}
                       className="h-20 w-20 rounded-full object-cover"
+                      loading="lazy"
                     />
                   )}
                   <h3 className="mt-4 font-display text-lg font-semibold text-primary-dark">
