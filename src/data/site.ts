@@ -357,3 +357,28 @@ export const PASSOS_TRIBUTARIO = [
       "Na fase seguinte, o valor é confirmado documento a documento (responsabilidade do município). Os honorários são cobrados apenas sobre o que de fato for recuperado.",
   },
 ];
+
+// ----------------------------------------------------------------------------
+// Time — preencha para exibir a seção "Quem conduz" no Sobre.
+// Enquanto a lista estiver VAZIA, a seção nem aparece (gated). Para publicar:
+// 1) coloque as fotos em src/assets/time/ e importe-as no topo deste arquivo;
+// 2) adicione um objeto por pessoa abaixo (nome, cargo, bio e a foto importada).
+// ----------------------------------------------------------------------------
+export interface MembroTime {
+  nome: string;
+  cargo: string;
+  bio: string;
+  foto?: string; // import de src/assets/time/...
+  linkedin?: string;
+}
+
+export const TIME: MembroTime[] = [
+  // Exemplo (descomente e preencha):
+  // {
+  //   nome: "Eduardo Sobrenome",
+  //   cargo: "Fundador",
+  //   bio: "Trajetória curta e foco de atuação.",
+  //   foto: fotoEduardo,
+  //   linkedin: "https://www.linkedin.com/in/...",
+  // },
+];

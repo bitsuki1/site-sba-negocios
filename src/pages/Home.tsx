@@ -5,6 +5,7 @@ import { Hero } from "@/components/Hero";
 import { SecaoCTA } from "@/components/SecaoCTA";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { SETORES, solucoesPorSetor, PARCEIRO_CSTR } from "@/data/site";
+import cstrLogo from "@/assets/cstr/cstr-logo.png";
 
 const PROVAS = [
   {
@@ -175,9 +176,14 @@ const Home = () => {
           <p className="text-center text-sm font-semibold uppercase tracking-wide text-muted-foreground">
             Tecnologia e execução com parceiros estabelecidos
           </p>
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
+            <img
+              src={cstrLogo}
+              alt="CSTR — tratamento e valorização de resíduos"
+              className="h-12 w-auto rounded-md bg-card px-3 py-2 shadow-sm"
+              loading="lazy"
+            />
             {[
-              "CSTR — tratamento e valorização de resíduos",
               "ConAid CBR Plus — estabilização de solo",
               "Dynacal — pavimentação",
             ].map((p) => (

@@ -1,36 +1,53 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "@/pages/Home";
-import SetorPublico from "@/pages/SetorPublico";
-import SetorPrivado from "@/pages/SetorPrivado";
-import Solucoes from "@/pages/Solucoes";
-import RecuperacaoTributaria from "@/pages/RecuperacaoTributaria";
-import Residuos from "@/pages/Residuos";
-import ResiduosHospitalares from "@/pages/ResiduosHospitalares";
-import EstabilizadorSolo from "@/pages/EstabilizadorSolo";
-import PaginaSolucao from "@/pages/PaginaSolucao";
-import Sobre from "@/pages/Sobre";
-import SejaParceiro from "@/pages/SejaParceiro";
-import Contato from "@/pages/Contato";
-import NotFound from "@/pages/NotFound";
+import { Suspense, lazy } from "react";
+
+// Lazy-load das páginas: cada rota vira um chunk próprio, carregado sob demanda.
+// Isso reduz o bundle inicial e acelera o primeiro carregamento.
+const Home = lazy(() => import("@/pages/Home"));
+const SetorPublico = lazy(() => import("@/pages/SetorPublico"));
+const SetorPrivado = lazy(() => import("@/pages/SetorPrivado"));
+const Solucoes = lazy(() => import("@/pages/Solucoes"));
+const RecuperacaoTributaria = lazy(() => import("@/pages/RecuperacaoTributaria"));
+const Residuos = lazy(() => import("@/pages/Residuos"));
+const ResiduosHospitalares = lazy(() => import("@/pages/ResiduosHospitalares"));
+const EstabilizadorSolo = lazy(() => import("@/pages/EstabilizadorSolo"));
+const PaginaSolucao = lazy(() => import("@/pages/PaginaSolucao"));
+const Sobre = lazy(() => import("@/pages/Sobre"));
+const SejaParceiro = lazy(() => import("@/pages/SejaParceiro"));
+const Contato = lazy(() => import("@/pages/Contato"));
+const PoliticaPrivacidade = lazy(() => import("@/pages/PoliticaPrivacidade"));
+const NotFound = lazy(() => import("@/pages/NotFound"));
+
+const Fallback = () => (
+  <div
+    className="flex min-h-screen items-center justify-center bg-background"
+    aria-label="Carregando"
+  >
+    <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+  </div>
+);
 
 const App = () => {
   return (
     <BrowserRouter basename={import.meta.env.BASE_URL}>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/setor-publico" element={<SetorPublico />} />
-        <Route path="/setor-privado" element={<SetorPrivado />} />
-        <Route path="/solucoes" element={<Solucoes />} />
-        <Route path="/recuperacao-tributaria" element={<RecuperacaoTributaria />} />
-        <Route path="/residuos" element={<Residuos />} />
-        <Route path="/residuos-hospitalares" element={<ResiduosHospitalares />} />
-        <Route path="/estabilizador-de-solo" element={<EstabilizadorSolo />} />
-        <Route path="/solucoes/:slug" element={<PaginaSolucao />} />
-        <Route path="/sobre" element={<Sobre />} />
-        <Route path="/seja-um-parceiro" element={<SejaParceiro />} />
-        <Route path="/contato" element={<Contato />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <Suspense fallback={<Fallback />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/setor-publico" element={<SetorPublico />} />
+          <Route path="/setor-privado" element={<SetorPrivado />} />
+          <Route path="/solucoes" element={<Solucoes />} />
+          <Route path="/recuperacao-tributaria" element={<RecuperacaoTributaria />} />
+          <Route path="/residuos" element={<Residuos />} />
+          <Route path="/residuos-hospitalares" element={<ResiduosHospitalares />} />
+          <Route path="/estabilizador-de-solo" element={<EstabilizadorSolo />} />
+          <Route path="/solucoes/:slug" element={<PaginaSolucao />} />
+          <Route path="/sobre" element={<Sobre />} />
+          <Route path="/seja-um-parceiro" element={<SejaParceiro />} />
+          <Route path="/contato" element={<Contato />} />
+          <Route path="/privacidade" element={<PoliticaPrivacidade />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 };

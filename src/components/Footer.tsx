@@ -83,7 +83,15 @@ export const Footer = () => {
       <div className="border-t border-primary-foreground/15">
         <div className="container-sba flex flex-col items-center justify-between gap-2 py-5 text-xs text-primary-foreground/65 sm:flex-row">
           <p>© {ano} SBA Negócios. Todos os direitos reservados.</p>
-          <p>{CONTATO.dominio}</p>
+          <div className="flex items-center gap-4">
+            <Link
+              to="/privacidade"
+              className="transition-colors hover:text-primary-foreground"
+            >
+              Política de Privacidade
+            </Link>
+            <span>{CONTATO.dominio}</span>
+          </div>
         </div>
       </div>
     </footer>

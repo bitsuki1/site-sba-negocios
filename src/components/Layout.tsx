@@ -2,6 +2,8 @@ import { useEffect, type ReactNode } from "react";
 import { useLocation } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { BotaoWhatsApp } from "@/components/BotaoWhatsApp";
+import { applySeo } from "@/lib/seo";
 
 interface LayoutProps {
   children: ReactNode;
@@ -10,9 +12,10 @@ interface LayoutProps {
 export const Layout = ({ children }: LayoutProps) => {
   const { pathname } = useLocation();
 
-  // Sempre volta ao topo ao trocar de página
+  // Ao trocar de página: volta ao topo e atualiza título/metas (SEO por rota).
   useEffect(() => {
     window.scrollTo(0, 0);
+    applySeo(pathname);
   }, [pathname]);
 
   return (
@@ -28,6 +31,7 @@ export const Layout = ({ children }: LayoutProps) => {
         {children}
       </main>
       <Footer />
+      <BotaoWhatsApp />
     </div>
   );
 };

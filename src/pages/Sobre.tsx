@@ -3,6 +3,7 @@ import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
 import { SecaoCTA } from "@/components/SecaoCTA";
 import { Button } from "@/components/ui/button";
+import { TIME } from "@/data/site";
 
 const VALORES = [
   {
@@ -115,6 +116,57 @@ const Sobre = () => {
           </div>
         </div>
       </section>
+
+      {TIME.length > 0 && (
+        <section className="bg-background">
+          <div className="container-sba py-16 md:py-20">
+            <div className="mx-auto max-w-2xl text-center">
+              <div className="mx-auto mb-5 rule-gold" />
+              <h2 className="font-display text-3xl font-bold text-primary-dark">
+                Quem conduz
+              </h2>
+              <p className="mt-4 text-muted-foreground">
+                As pessoas por trás da SBA.
+              </p>
+            </div>
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {TIME.map((m) => (
+                <div
+                  key={m.nome}
+                  className="rounded-lg border border-border bg-card p-6"
+                >
+                  {m.foto && (
+                    <img
+                      src={m.foto}
+                      alt={m.nome}
+                      className="h-20 w-20 rounded-full object-cover"
+                    />
+                  )}
+                  <h3 className="mt-4 font-display text-lg font-semibold text-primary-dark">
+                    {m.nome}
+                  </h3>
+                  <p className="text-sm font-medium text-gold-foreground">
+                    {m.cargo}
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {m.bio}
+                  </p>
+                  {m.linkedin && (
+                    <a
+                      href={m.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 inline-block text-sm font-semibold text-primary hover:text-primary-dark"
+                    >
+                      LinkedIn →
+                    </a>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <SecaoCTA
         titulo="Vamos conversar sobre o seu projeto?"

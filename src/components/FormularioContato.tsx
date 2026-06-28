@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -266,7 +267,11 @@ export const FormularioContato = ({ variante = "contato" }: FormularioContatoPro
 
       <p className="text-xs text-muted-foreground">
         Ao enviar, você concorda em ser contatado pela SBA Negócios sobre este
-        assunto.
+        assunto e com a nossa{" "}
+        <Link to="/privacidade" className="underline hover:text-primary">
+          Política de Privacidade
+        </Link>
+        .
       </p>
     </form>
   );
